@@ -3,6 +3,8 @@
 #![no_std]
 #![no_main]
 
+#![allow(non_snake_case)]
+
 use core::panic::PanicInfo;
  
 #[panic_handler]
