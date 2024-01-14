@@ -5,9 +5,3 @@ authors = ["Logan Dhillon"]
 license = "GPL-3.0"
 readme = "README.md"
 repository = "https://github.com/LDMGamingYT/BadOS-Shell-System/"
-
-[profile.dev]
-panic = "abort"
-
-[profile.release]
-panic = "abort"
