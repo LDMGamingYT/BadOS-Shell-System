@@ -19,3 +19,6 @@ Use the `x84_64-bad_os` compilation target. You can use this with Cargo using th
 ```shell
 cargo build --target x84_64-bad_os.json
 ```
+
+Copyright (c) 2024 Logan Dhillon.
+This software is subject to the Bad Technologies Open Software License. See [LICENSE](LICENSE) for more.
