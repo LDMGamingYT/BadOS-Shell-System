@@ -80,7 +80,20 @@ impl Writer {
         }
     }
 
-    fn new_line(&mut self) {}
+    fn new_line(&mut self) {
+        for row in 1..BUFFER_HEIGHT {
+            for col in 0..BUFFER_WIDTH {
+                let character = self.buffer.chars[row][col].read();
+                self.buffer.chars[row - 1][col].write(character);
+            }
+        }
+        self.clear_row(BUFFER_HEIGHT - 1);
+        self.col_pos = 0;
+    }
+
+    fn clear_row(&mut self, row: usize) {
+        todo!()
+    }
 
     pub fn write_string(&mut self, s: &str) {
         for byte in s.bytes() {
@@ -109,6 +122,6 @@ pub fn tmp() {
         buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
     };
 
-    write!(writer, "Hello, BadOS!\nThis is on a new line!").unwrap();
-    write!(writer, "Lorem ipsum dolor sit amet sunt labore laborum incididunt qui deserunt officia pariatur velit nisi occaecat quis esse nisi consectetur tempor ut fugiat ut veniam proident veniam minim pariatur non et incididunt ex velit minim ea ex mollit in fugiat pariatur cupidatat duis anim magna ex in exercitation eiusmod exercitation proident deserunt anim aliquip cillum").unwrap();
+    write!(writer, "Hello, BadOS!").unwrap();
+    //write!(writer, "Lorem ipsum dolor sit amet sunt labore laborum incididunt qui deserunt officia pariatur velit nisi occaecat quis esse nisi consectetur tempor ut fugiat ut veniam proident veniam minim pariatur non et incididunt ex velit minim ea ex mollit in fugiat pariatur cupidatat duis anim magna ex in exercitation eiusmod exercitation proident deserunt anim aliquip cillum").unwrap();
 }
