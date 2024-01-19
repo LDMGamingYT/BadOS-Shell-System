@@ -110,4 +110,5 @@ pub fn tmp() {
     };
 
     write!(writer, "Hello, BadOS!\nThis is on a new line!").unwrap();
+    write!(writer, "Lorem ipsum dolor sit amet sunt labore laborum incididunt qui deserunt officia pariatur velit nisi occaecat quis esse nisi consectetur tempor ut fugiat ut veniam proident veniam minim pariatur non et incididunt ex velit minim ea ex mollit in fugiat pariatur cupidatat duis anim magna ex in exercitation eiusmod exercitation proident deserunt anim aliquip cillum").unwrap();
 }
