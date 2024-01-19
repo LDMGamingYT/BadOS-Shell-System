@@ -6,3 +6,6 @@ license = "GPL-3.0"
 readme = "README.md"
 repository = "https://github.com/LDMGamingYT/BadOS-Shell-System/"
 edition = "2021"
+
+[dependencies]
+bootloader = "0.9.23"
