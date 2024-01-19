@@ -92,7 +92,13 @@ impl Writer {
     }
 
     fn clear_row(&mut self, row: usize) {
-        todo!()
+        let blank = ScreenChar {
+            ascii_char: b' ',
+            color_code: self.color_code,
+        };
+        for col in 0..BUFFER_WIDTH {
+            self.buffer.chars[row][col].write(blank);
+        }
     }
 
     pub fn write_string(&mut self, s: &str) {
@@ -122,6 +128,6 @@ pub fn tmp() {
         buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
     };
 
-    write!(writer, "Hello, BadOS!").unwrap();
+    write!(writer, "Hello, BadOS!\nNew lines!").unwrap();
     //write!(writer, "Lorem ipsum dolor sit amet sunt labore laborum incididunt qui deserunt officia pariatur velit nisi occaecat quis esse nisi consectetur tempor ut fugiat ut veniam proident veniam minim pariatur non et incididunt ex velit minim ea ex mollit in fugiat pariatur cupidatat duis anim magna ex in exercitation eiusmod exercitation proident deserunt anim aliquip cillum").unwrap();
 }
