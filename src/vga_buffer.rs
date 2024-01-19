@@ -1,6 +1,17 @@
 use core::fmt;
-
 use volatile::Volatile;
+use lazy_static::lazy_static;
+use spin::Mutex;
+
+use crate::vga_buffer;
+
+lazy_static! {
+    pub static ref WRITER: Mutex<Writer> = Mutex::new(Writer {
+        col_pos: 0,
+        color_code: ColorCode::new(Color::White, Color::Black),
+        buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
+    });
+}
 
 #[allow(dead_code)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -118,16 +129,4 @@ impl fmt::Write for Writer {
         self.write_string(s);
         Ok(())
     }
-}
-
-pub fn tmp() {
-    use core::fmt::Write;
-    let mut writer = Writer {
-        col_pos: 0,
-        color_code: ColorCode::new(Color::White, Color::Black),
-        buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
-    };
-
-    write!(writer, "Hello, BadOS!\nNew lines!").unwrap();
-    write!(writer, "\n\nLorem ipsum dolor sit amet sunt labore laborum incididunt qui deserunt officia pariatur velit nisi occaecat quis esse nisi consectetur tempor ut fugiat ut veniam proident veniam minim pariatur non et incididunt ex velit minim ea ex mollit in fugiat pariatur cupidatat duis anim magna ex in exercitation eiusmod exercitation proident deserunt anim aliquip cillum").unwrap();
 }
