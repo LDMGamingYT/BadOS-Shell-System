@@ -4,7 +4,7 @@
 #![no_main]
 
 use core::panic::PanicInfo;
- 
+
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
     loop {}
@@ -21,7 +21,7 @@ pub extern "C" fn _start() -> ! {
             *vga_buffer.offset(i as isize * 2) = byte;
             *vga_buffer.offset(i as isize * 2 + 1) = 0xb;
         }
-    }       
+    }
 
     loop {}
 }
