@@ -102,11 +102,12 @@ impl fmt::Write for Writer {
 }
 
 pub fn tmp() {
+    use core::fmt::Write;
     let mut writer = Writer {
         col_pos: 0,
         color_code: ColorCode::new(Color::White, Color::Black),
         buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
     };
 
-    writer.write_string("Hello, BadOS!\nThis is on a new line!")
+    write!(writer, "Hello, BadOS!\nThis is on a new line!").unwrap();
 }
