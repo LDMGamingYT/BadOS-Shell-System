@@ -1,3 +1,5 @@
+use core::fmt;
+
 use volatile::Volatile;
 
 #[allow(dead_code)]
@@ -80,7 +82,7 @@ impl Writer {
 
     fn new_line(&mut self) {}
 
-    pub fn write_str(&mut self, s: &str) {
+    pub fn write_string(&mut self, s: &str) {
         for byte in s.bytes() {
             match byte {
                 // is printable ASCII byte or newline
@@ -92,6 +94,13 @@ impl Writer {
     }
 }
 
+impl fmt::Write for Writer {
+    fn write_str(&mut self, s: &str) -> fmt::Result {
+        self.write_string(s);
+        Ok(())
+    }
+}
+
 pub fn tmp() {
     let mut writer = Writer {
         col_pos: 0,
@@ -99,5 +108,5 @@ pub fn tmp() {
         buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
     };
 
-    writer.write_str("Hello, BadOS!\nThis is on a new line!")
+    writer.write_string("Hello, BadOS!\nThis is on a new line!")
 }
