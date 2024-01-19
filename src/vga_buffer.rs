@@ -3,8 +3,6 @@ use volatile::Volatile;
 use lazy_static::lazy_static;
 use spin::Mutex;
 
-use crate::vga_buffer;
-
 lazy_static! {
     pub static ref WRITER: Mutex<Writer> = Mutex::new(Writer {
         col_pos: 0,
