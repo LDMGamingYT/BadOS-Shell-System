@@ -3,8 +3,6 @@
 #![no_std]
 #![no_main]
 
-#![allow(non_snake_case)]
-
 use core::panic::PanicInfo;
  
 #[panic_handler]
@@ -23,7 +21,7 @@ pub extern "C" fn _start() -> ! {
             *vga_buffer.offset(i as isize * 2) = byte;
             *vga_buffer.offset(i as isize * 2 + 1) = 0xb;
         }
-    }
+    }       
 
     loop {}
 }

@@ -1,5 +1,5 @@
 [package]
-name = "BadOS-Shell-System"
+name = "bad_os_shell_system"
 version = "0.1.0-dev"
 authors = ["Logan Dhillon"]
 license = "GPL-3.0"
