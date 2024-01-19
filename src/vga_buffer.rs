@@ -97,5 +97,5 @@ pub fn tmp() {
         buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
     };
 
-    writer.write_str("Hello, BadOS!")
+    writer.write_str("Hello, BadOS!\nThis is on a new line!")
 }
