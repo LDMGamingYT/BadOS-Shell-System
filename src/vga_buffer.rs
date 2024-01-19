@@ -93,7 +93,7 @@ impl Writer {
 pub fn tmp() {
     let mut writer = Writer {
         col_pos: 0,
-        color_code: ColorCode::new(Color::Yellow, Color::Black),
+        color_code: ColorCode::new(Color::White, Color::Black),
         buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
     };
 
