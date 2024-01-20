@@ -7,7 +7,7 @@ pub enum ExitCode {
 }
 
 #[allow(dead_code)]
-pub fn exit_qemu(exit_code: ExitCode) {
+pub fn exit(exit_code: ExitCode) {
     use x86_64::instructions::port::Port;
 
     unsafe {

@@ -28,7 +28,7 @@ fn panic(info: &PanicInfo) -> ! {
 fn panic(info: &PanicInfo) -> ! {
     serialln!("[failed]\n");
     serialln!("Error: {}\n", info);
-    qemu::exit_qemu(qemu::ExitCode::Failed);
+    qemu::exit(qemu::ExitCode::Failed);
     loop {}
 }
 
@@ -38,7 +38,7 @@ pub fn test_runner(tests: &[&dyn Fn()]) {
     for test in tests {
         test();
     }
-    qemu::exit_qemu(qemu::ExitCode::Success);
+    qemu::exit(qemu::ExitCode::Success);
 }
 
 #[no_mangle]
