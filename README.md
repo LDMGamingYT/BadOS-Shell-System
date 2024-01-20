@@ -4,20 +4,15 @@ Bad Technologies' BadOS Shell System, developed in Rust.
 
 ## Compilation
 
-### Cargo
+### Toolchain
 
-BadOS Shell System must be built using the `nightly` branches of Cargo and Rust. Set this project to use `nightly` with the following command:
-
-```shell
-rustup override set nightly
-```
+BadOS Shell System will automatically use the `nightly` Rust toolchain.
 
 ### Compilation Target
 
-Use the `x84_64-bad_os` compilation target. You can use this with Cargo using the following command:
-
-```shell
-cargo build --target x84_64-bad_os.json
+BadOS Shell System uses the `x86_64-bad_os` compilation target by default. You can change this by passing the following argument to cargo.
+```
+--target TARGET_JSON
 ```
 
 Copyright (c) 2024 Logan Dhillon.
