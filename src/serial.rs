@@ -28,8 +28,8 @@ macro_rules! serial {
 /// Prints to the host through the serial interface, appending a newline.
 #[macro_export]
 macro_rules! serialln {
-    () => ($crate::serial_print!("\n"));
-    ($fmt:expr) => ($crate::serial_print!(concat!($fmt, "\n")));
-    ($fmt:expr, $($arg:tt)*) => ($crate::serial_print!(
+    () => ($crate::serial!("\n"));
+    ($fmt:expr) => ($crate::serial!(concat!($fmt, "\n")));
+    ($fmt:expr, $($arg:tt)*) => ($crate::serial!(
         concat!($fmt, "\n"), $($arg)*));
 }
