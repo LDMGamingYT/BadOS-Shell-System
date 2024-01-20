@@ -3,6 +3,11 @@
 #![no_std]
 #![no_main]
 
+#![feature(custom_test_frameworks)]
+#![test_runner(crate::test_runner)]
+
+#![reexport_test_harness_main = "test_main"]
+
 use core::panic::PanicInfo;
 
 mod vga_buffer;
@@ -13,11 +18,20 @@ fn panic(info: &PanicInfo) -> ! {
     loop {}
 }
 
+#[cfg(test)]
+pub fn test_runner(tests: &[&dyn Fn()]) {
+    println!("Running {} tests", tests.len());
+    for test in tests {
+        test();
+    }
+}
+
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    println!("Hello, BadOS!");
-    print!("New lines!");
-    print!("\n\nLorem ipsum dolor sit amet sunt labore laborum incididunt qui deserunt officia pariatur velit nisi occaecat quis esse nisi consectetur tempor ut fugiat ut veniam proident veniam minim pariatur non et incididunt ex velit minim ea ex mollit in fugiat pariatur cupidatat duis anim magna ex in exercitation eiusmod exercitation proident deserunt anim aliquip cillum");
+    println!("Welcome to BadOS Shell System.");
+
+    #[cfg(test)]
+    test_main();
 
     loop {}
 }
