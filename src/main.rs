@@ -43,7 +43,7 @@ pub extern "C" fn _start() -> ! {
 
 #[test_case]
 fn trivial_assertion() {
-    print!("trivial assertion... ");
+    serial!("trivial assertion... ");
     assert_eq!(1, 1);
-    println!("[ok]");
+    serialln!("[ok]");
 }
