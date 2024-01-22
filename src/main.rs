@@ -4,7 +4,7 @@
 #![no_main]
 
 #![feature(custom_test_frameworks)]
-#![test_runner(crate::test_runner)]
+#![test_runner(bad_os_shell_system::test_runner)]
 
 #![reexport_test_harness_main = "test_main"]
 
