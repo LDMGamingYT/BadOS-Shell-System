@@ -8,7 +8,7 @@
 
 use core::panic::PanicInfo;
 
-use bad_os_shell_system::{serial_println, qemu::{exit, ExitCode}};
+use bad_os_shell_system::{serial_println, qemu::{exit, ExitCode}, serial_print};
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
@@ -32,4 +32,10 @@ pub fn test_runner(tests: &[&dyn Fn()]) {
         exit(ExitCode::Failed);
     }
     exit(ExitCode::Success);
+}
+
+#[test_case]
+fn should_fail() {
+    serial_print!("should_panic::should_fail...\t");
+    assert_eq!(0, 1);
 }
