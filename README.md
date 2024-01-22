@@ -4,11 +4,9 @@ Bad Technologies' BadOS Shell System, developed in Rust.
 
 ## Requirements
 
-You need a `nightly` Rust compiler with the `llvm-tools-preview` component, which can be installed using:
-
-```
-rustup component add llvm-tools-preview
-```
+- Nightly Rust compiler
+- `llvm-tools-preview` component, which can be installed using `rustup component add llvm-tools-preview`.
+- QEMU
 
 ## Compilation
 
