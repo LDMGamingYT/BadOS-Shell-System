@@ -12,7 +12,6 @@ use core::panic::PanicInfo;
 
 mod vga_buffer;
 mod qemu;
-
 mod serial;
 
 #[panic_handler]
