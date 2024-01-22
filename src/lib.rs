@@ -8,8 +8,9 @@
 
 use core::panic::PanicInfo;
 
-mod serial;
-mod qemu;
+pub mod serial;
+pub mod qemu;
+pub mod vga_buffer;
 
 pub trait Testable {
     fn run(&self) -> ();
