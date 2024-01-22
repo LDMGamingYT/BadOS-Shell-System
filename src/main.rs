@@ -26,10 +26,7 @@ fn panic(info: &PanicInfo) -> ! {
 #[cfg(test)]
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
-    serial_println!("[failed]\n");
-    serial_println!("Error: {}\n", info);
-    qemu::exit(qemu::ExitCode::Failed);
-    loop {}
+    bad_os_shell_system::test_panic_handler(info)
 }
 
 #[no_mangle]
