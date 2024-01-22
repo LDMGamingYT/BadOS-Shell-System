@@ -7,6 +7,7 @@
 #![reexport_test_harness_main = "test_main"]
 
 use core::panic::PanicInfo;
+use bad_os_shell_system::println;
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
@@ -22,4 +23,9 @@ fn test_runner(tests: &[&dyn Fn()]) {
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     bad_os_shell_system::test_panic_handler(info)
+}
+
+#[test_case]
+fn test_println() {
+    println!("test_println output");
 }
