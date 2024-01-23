@@ -32,6 +32,8 @@ fn panic(info: &PanicInfo) -> ! {
 pub extern "C" fn _start() -> ! {
     println!("Welcome to BadOS Shell System.");
 
+    bad_os_shell_system::init();
+
     #[cfg(test)]
     test_main();
 
