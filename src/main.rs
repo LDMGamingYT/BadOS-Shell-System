@@ -34,8 +34,13 @@ pub extern "C" fn _start() -> ! {
 
     bad_os_shell_system::init();
 
+    // Test breakpoint exception
+    x86_64::instructions::interrupts::int3();
+
     #[cfg(test)]
     test_main();
+
+    println!("we ball (didn't crash)");
 
     loop {}
 }
