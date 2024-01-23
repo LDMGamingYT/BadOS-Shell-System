@@ -34,13 +34,8 @@ pub extern "C" fn _start() -> ! {
 
     bad_os_shell_system::init();
 
-    // trigger a page fault (unhandled, will throw double fault)
-    unsafe { *(0xdeadbeef as *mut u8) = 42; };
-
     #[cfg(test)]
     test_main();
-
-    println!("Survived exception :)");
 
     loop {}
 }
