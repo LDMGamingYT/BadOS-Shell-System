@@ -28,7 +28,7 @@ pub fn test_runner(tests: &[&dyn Fn()]) {
     serial_println!("Running {} tests", tests.len());
     for test in tests {
         test();
-        serial_println!("[test did not panic]");
+        serial_println!("[failed, test did not panic]");
         exit(ExitCode::Failed);
     }
     exit(ExitCode::Success);
