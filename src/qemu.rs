@@ -1,3 +1,5 @@
+// Copyright (c) 2024 Logan Dhillon. This software is subject to the Bad Technologies Open Software License.
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u32)]
 #[allow(dead_code)]

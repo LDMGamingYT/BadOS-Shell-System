@@ -1,3 +1,5 @@
+// Copyright (c) 2024 Logan Dhillon. This software is subject to the Bad Technologies Open Software License.
+
 use core::fmt;
 use volatile::Volatile;
 use lazy_static::lazy_static;

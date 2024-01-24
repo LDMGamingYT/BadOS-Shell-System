@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Logan Dhillon
+// Copyright (c) 2024 Logan Dhillon. This software is subject to the Bad Technologies Open Software License.
 
 #![no_std]
 #![no_main]

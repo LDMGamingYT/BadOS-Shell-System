@@ -1,3 +1,5 @@
+// Copyright (c) 2024 Logan Dhillon. This software is subject to the Bad Technologies Open Software License.
+
 use uart_16550::SerialPort;
 use spin::Mutex;
 use lazy_static::lazy_static;

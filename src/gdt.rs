@@ -1,3 +1,5 @@
+// Copyright (c) 2024 Logan Dhillon. This software is subject to the Bad Technologies Open Software License.
+
 use lazy_static::lazy_static;
 use x86_64::structures::tss::TaskStateSegment;
 use x86_64::{structures::gdt::SegmentSelector, VirtAddr};
