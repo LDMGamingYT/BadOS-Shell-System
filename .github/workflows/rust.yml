@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Add rust-src component
+      run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
     - uses: actions/checkout@v3
     - name: Build
       run: cargo build --verbose
