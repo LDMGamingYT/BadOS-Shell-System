@@ -18,16 +18,15 @@ pub mod gdt;
 pub fn init() {
     interrupts::init_idt();
     gdt::init();
+    unsafe { interrupts::PICS.lock().initialize() };
+    x86_64::instructions::interrupts::enable();
 }
 
 pub trait Testable {
     fn run(&self) -> ();
 }
 
-impl<T> Testable for T
-where
-    T: Fn(),
-{
+impl<T> Testable for T where T: Fn() {
     fn run(&self) {
         serial_print!("{}...\t", core::any::type_name::<T>());
         self();
