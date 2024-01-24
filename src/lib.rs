@@ -9,8 +9,6 @@
 
 use core::panic::PanicInfo;
 
-use x86_64::instructions::hlt;
-
 pub mod serial;
 pub mod qemu;
 pub mod vga_buffer;

@@ -10,8 +10,6 @@
 
 use core::panic::PanicInfo;
 
-use bad_os_shell_system::hlt_loop;
-
 mod vga_buffer;
 mod qemu;
 mod serial;

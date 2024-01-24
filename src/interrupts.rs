@@ -1,4 +1,3 @@
-use x86_64::instructions::port;
 use x86_64::structures::idt::{InterruptDescriptorTable, InterruptStackFrame};
 use lazy_static::lazy_static;
 use pic8259::ChainedPics;
