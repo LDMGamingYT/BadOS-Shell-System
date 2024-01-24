@@ -10,6 +10,8 @@
 
 use core::panic::PanicInfo;
 
+use bad_os_shell_system::hlt_loop;
+
 mod vga_buffer;
 mod qemu;
 mod serial;
@@ -18,7 +20,7 @@ mod serial;
 #[cfg(not(test))]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    loop {}
+    bad_os_shell_system::hlt_loop();
 }
 
 // panic handler in test mode
@@ -37,5 +39,5 @@ pub extern "C" fn _start() -> ! {
     #[cfg(test)]
     test_main();
 
-    loop {}
+    bad_os_shell_system::hlt_loop();
 }
