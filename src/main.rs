@@ -37,5 +37,8 @@ pub extern "C" fn _start() -> ! {
     #[cfg(test)]
     test_main();
 
-    loop {}
+    loop {
+        use bad_os_shell_system::print;
+        print!("!");
+    }
 }
