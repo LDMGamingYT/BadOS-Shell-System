@@ -10,6 +10,8 @@
 
 use core::panic::PanicInfo;
 
+use bootloader::{entry_point, BootInfo};
+
 mod vga_buffer;
 mod qemu;
 mod serial;
@@ -28,8 +30,9 @@ fn panic(info: &PanicInfo) -> ! {
     bad_os_shell_system::test_panic_handler(info)
 }
 
-#[no_mangle]
-pub extern "C" fn _start() -> ! {
+entry_point!(kernel_main);
+
+fn kernel_main(boot_info: &'static BootInfo) -> ! {
     println!("Welcome to BadOS Shell System.");
 
     bad_os_shell_system::init();
