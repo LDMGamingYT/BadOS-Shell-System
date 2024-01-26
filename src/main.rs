@@ -11,10 +11,25 @@
 use core::panic::PanicInfo;
 
 use bootloader::{entry_point, BootInfo};
+use x86_64::VirtAddr;
 
 mod vga_buffer;
 mod qemu;
 mod serial;
+
+entry_point!(kernel_main);
+
+fn kernel_main(boot_info: &'static BootInfo) -> ! {
+    println!("Welcome to BadOS Shell System.");
+    bad_os_shell_system::init();
+
+    let phys_mem_offset = VirtAddr::new(boot_info.physical_memory_offset);
+
+    #[cfg(test)]
+    test_main();
+
+    bad_os_shell_system::hlt_loop();
+}
 
 #[panic_handler]
 #[cfg(not(test))]
@@ -23,22 +38,9 @@ fn panic(info: &PanicInfo) -> ! {
     bad_os_shell_system::hlt_loop();
 }
 
-// panic handler in test mode
+/// panic handler in test mode
 #[cfg(test)]
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     bad_os_shell_system::test_panic_handler(info)
-}
-
-entry_point!(kernel_main);
-
-fn kernel_main(boot_info: &'static BootInfo) -> ! {
-    println!("Welcome to BadOS Shell System.");
-
-    bad_os_shell_system::init();
-
-    #[cfg(test)]
-    test_main();
-
-    bad_os_shell_system::hlt_loop();
 }
