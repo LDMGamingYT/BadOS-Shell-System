@@ -10,6 +10,7 @@
 
 use core::panic::PanicInfo;
 
+use bad_os_shell_system::memory::translate_addr;
 use bootloader::{entry_point, BootInfo};
 use x86_64::VirtAddr;
 
@@ -24,6 +25,14 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     bad_os_shell_system::init();
 
     let phys_mem_offset = VirtAddr::new(boot_info.physical_memory_offset);
+
+    let addresses = [0xb8000, 0x201008, 0x0100_0200_1a10, boot_info.physical_memory_offset];
+
+    for &addr in &addresses {
+        let virt = VirtAddr::new(addr);
+        let phys = unsafe {translate_addr(virt, phys_mem_offset)};
+        println!("{:?} -> {:?}", virt, phys);
+    }
 
     #[cfg(test)]
     test_main();
